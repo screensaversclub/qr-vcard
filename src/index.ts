@@ -1,7 +1,7 @@
-import type { VCardQR } from "./vcard-qr";
+import type { VCardQR as TVCardQR } from "./vcard-qr";
 import QRCode from "qrcode";
 
-const VCardQR: VCardQR = (vcard) => {
+const VCardQR: TVCardQR = (vcard) => {
   return QRCode.toString(
     `BEGIN:VCARD
 VERSION:3.0
