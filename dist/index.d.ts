@@ -1,5 +1,5 @@
-declare const QRVCard: {
-    QrCode: any;
-};
-export { QRVCard };
+import type { VCardQR } from "./vcard-qr";
+declare const VCardQR: VCardQR;
+export default VCardQR;
+export { VCardQR };
 //# sourceMappingURL=index.d.ts.map
