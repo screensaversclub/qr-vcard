@@ -1,4 +1,3 @@
 import { QrCode } from "qr-code-and-vcard";
-console.log(QrCode);
-const QRVCard = {};
+const QRVCard = { QrCode };
 export { QRVCard };
