@@ -9,8 +9,10 @@ N:${vcard.lastName};${vcard.firstName}
 FN:${vcard.firstName} ${vcard.lastName}
 ORG:${vcard.companyName}
 ROLE:${vcard.title}
-${vcard.url.map((url) => `URL:${url}\n`)}
-ADR:;;;;;;
+${Array.isArray(vcard.url) && vcard.url.map((url) => `URL:${url}\n`)}
+ADR:;${Object.keys(vcard.address)
+      .map((component) => `${vcard.address[component]};`)
+      .join()}
 END:VCARD`
   );
 };

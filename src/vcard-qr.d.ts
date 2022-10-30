@@ -1,12 +1,14 @@
 export type VCardQR = (vCard: VCard) => void;
 
-export type VcardAddress = {
+export type VCardAddress = {
   type: "work" | "home";
   address: string;
   street_address: string;
   locality: string;
-  region: string;
-  po_box: string;
+  region?: string;
+  po_box?: string;
+  postal_code?: string;
+  country: string;
 };
 
 export type VCard = {

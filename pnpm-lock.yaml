@@ -4,11 +4,9 @@ specifiers:
   '@types/qrcode': ^1.5.0
   qrcode: ^1.5.1
   typescript: ^4.8.4
-  vcard4: ^3.1.3
 
 dependencies:
   qrcode: 1.5.1
-  vcard4: 3.1.3
 
 devDependencies:
   '@types/qrcode': 1.5.0
@@ -178,10 +176,6 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
-
-  /vcard4/3.1.3:
-    resolution: {integrity: sha512-v4DbdputS2TVQ9Il87taq2P2UVZ5XVAPf5UhG6NVPp28nm/KaDW7LeEUmLfppjI8A75DKHb6U9uDBosbI+bxxA==}
-    dev: false
 
   /which-module/2.0.0:
     resolution: {integrity: sha512-B+enWhmw6cjfVC7kS8Pj9pCrKSc5txArRyaYGe088shv/FGWH+0Rjx/xPgtsWfsUtS27FkP697E4DDhgrgoc0Q==}
