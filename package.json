@@ -1,9 +1,10 @@
 {
   "name": "vcard-qr",
   "version": "1.0.1",
-  "description": "",
+  "description": "Very simple VCard QR code geneator",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "github:screensaversclub/vcard-qr",
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"
