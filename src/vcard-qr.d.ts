@@ -36,7 +36,7 @@ export type VCard = {
   title: string;
   role: string;
   url: string[];
-  phone: VCardPhone;
+  phone: VCardPhone[];
   address: VCardAddress;
   email: string;
 };
