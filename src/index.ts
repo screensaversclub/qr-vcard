@@ -1,5 +1,5 @@
 import type { VCardAddress, VCardQR as TVCardQR } from "./vcard-qr";
-import QRCode from "qrcode";
+import QRCode, { QRCodeToStringOptions } from "qrcode";
 
 const EmptyIfUndefined: (str: string) => string = (str) => str || "";
 
@@ -35,7 +35,7 @@ const vCardAddressKeys: (keyof VCardAddress)[] = [
   "type",
 ];
 
-const VCardQR: TVCardQR = (vcard, options) => {
+const VCardQR: TVCardQR = async (vcard, options) => {
   const string = `BEGIN:VCARD
 VERSION:3.0
 N:${EmptyIfUndefined(vcard.lastName)};${EmptyIfUndefined(vcard.firstName)}
@@ -60,7 +60,16 @@ ${
     .join(";")}`
 }
 END:VCARD`;
-  return QRCode.toString(string, options);
+  try {
+    //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
+    const qrToStringPromise: (
+      text: string,
+      options?: QRCodeToStringOptions
+    ) => Promise<string> = QRCode.toString;
+    return await qrToStringPromise(string, options);
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default VCardQR;

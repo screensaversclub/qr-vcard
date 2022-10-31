@@ -37,7 +37,7 @@ const vCardAddressKeys = [
     "country",
     "type",
 ];
-const VCardQR = (vcard, options) => {
+const VCardQR = async (vcard, options) => {
     const string = `BEGIN:VCARD
 VERSION:3.0
 N:${EmptyIfUndefined(vcard.lastName)};${EmptyIfUndefined(vcard.firstName)}
@@ -56,7 +56,14 @@ ${vcard.address !== undefined &&
         })
             .join(";")}`}
 END:VCARD`;
-    return qrcode_1.default.toString(string, options);
+    try {
+        //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
+        const qrToStringPromise = qrcode_1.default.toString;
+        return await qrToStringPromise(string, options);
+    }
+    catch (err) {
+        throw err;
+    }
 };
 exports.VCardQR = VCardQR;
 exports.default = VCardQR;

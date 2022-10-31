@@ -1,6 +1,6 @@
 import { QRCodeToStringOptions } from "qrcode";
 
-export type VCardQR = (vCard: VCard, options: QRCodeOptions) => void;
+export type VCardQR = (vCard: VCard, options: QRCodeOptions) => Promise<string>;
 
 export type VCardAddress = {
   type: "work" | "home" | "dom" | "intl" | "postal" | "parcel";
