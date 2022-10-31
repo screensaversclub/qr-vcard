@@ -1,4 +1,6 @@
-export type VCardQR = (vCard: VCard) => void;
+import { QRCodeToStringOptions } from "qrcode";
+
+export type VCardQR = (vCard: VCard, options: QRCodeOptions) => void;
 
 export type VCardAddress = {
   type: "work" | "home";
