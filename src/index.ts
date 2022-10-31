@@ -1,8 +1,8 @@
 import type { VCardQR as TVCardQR } from "./vcard-qr";
 import QRCode from "qrcode";
 
-const VCardQR: TVCardQR = async (vcard, options) => {
-  return await QRCode.toString(
+const VCardQR: TVCardQR = (vcard, options) => {
+  return QRCode.toString(
     `BEGIN:VCARD
 VERSION:3.0
 N:${vcard.lastName};${vcard.firstName}
@@ -13,7 +13,8 @@ ${Array.isArray(vcard.url) && vcard.url.map((url) => `URL:${url}\n`)}
 ADR:;${Object.keys(vcard.address)
       .map((component) => `${vcard.address[component]};`)
       .join()}
-END:VCARD`
+END:VCARD`,
+    options
   );
 };
 
