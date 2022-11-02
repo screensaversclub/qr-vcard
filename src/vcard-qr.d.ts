@@ -1,6 +1,10 @@
 import { QRCodeToStringOptions } from "qrcode";
 
-export type VCardQR = (vCard: VCard, options: QRCodeOptions) => Promise<string>;
+export type VCardQR = (
+  vCard: VCard,
+  options: QRCodeOptions,
+  type?: "canvas" | "svg"
+) => Promise<string | HTMLCanvasElement>;
 
 export type VCardAddress = {
   type: "work" | "home" | "dom" | "intl" | "postal" | "parcel";

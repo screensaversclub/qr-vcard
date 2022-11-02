@@ -35,7 +35,7 @@ const vCardAddressKeys: (keyof VCardAddress)[] = [
   "type",
 ];
 
-const VCardQR: TVCardQR = async (vcard, options) => {
+const VCardQR: TVCardQR = async (vcard, options, type = "canvas") => {
   const string = `BEGIN:VCARD
 VERSION:3.0
 N:${EmptyIfUndefined(vcard.lastName)};${EmptyIfUndefined(vcard.firstName)}
@@ -62,11 +62,19 @@ ${
 END:VCARD`;
   try {
     //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
-    const qrToStringPromise: (
+    const qrToCanvasPromise: (
+      text: string,
+      options?: QRCodeToStringOptions
+    ) => Promise<HTMLCanvasElement> = QRCode.toCanvas;
+    const qrToSvgPromise: (
       text: string,
       options?: QRCodeToStringOptions
     ) => Promise<string> = QRCode.toString;
-    return await qrToStringPromise(string, options);
+    if (type === "canvas") {
+      return await qrToCanvasPromise(string, options);
+    } else {
+      return await qrToSvgPromise(string, options);
+    }
   } catch (err) {
     throw err;
   }
