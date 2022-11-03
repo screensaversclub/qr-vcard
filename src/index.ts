@@ -61,23 +61,24 @@ ${
 }
 END:VCARD`;
   try {
-    //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
     const qrToCanvasPromise: (
       text: string,
       options?: QRCodeToStringOptions
     ) => Promise<HTMLCanvasElement> = QRCode.toCanvas;
+
     const qrToSvgPromise: (
       text: string,
       options?: QRCodeToStringOptions
     ) => Promise<string> = QRCode.toString;
+
     const raw = QRCode.create(string);
 
     if (type === "canvas") {
       const canvas = await qrToCanvasPromise(string, options);
-      return Promise.resolve({ type, canvas, raw });
+      return { type, canvas, raw };
     } else {
       const svg = await qrToSvgPromise(string, options);
-      return Promise.resolve({ type, svg, raw });
+      return { type, svg, raw };
     }
   } catch (err) {
     throw err;

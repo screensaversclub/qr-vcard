@@ -21,4 +21,4 @@ const card = {
   },
 };
 
-VCardQR(card).then((str) => console.log(str));
+VCardQR(card, undefined, "svg").then((str) => console.log(str));

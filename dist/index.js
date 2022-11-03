@@ -57,17 +57,16 @@ ${vcard.address !== undefined &&
             .join(";")}`}
 END:VCARD`;
     try {
-        //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
         const qrToCanvasPromise = qrcode_1.default.toCanvas;
         const qrToSvgPromise = qrcode_1.default.toString;
         const raw = qrcode_1.default.create(string);
         if (type === "canvas") {
             const canvas = await qrToCanvasPromise(string, options);
-            return Promise.resolve({ type, canvas, raw });
+            return { type, canvas, raw };
         }
         else {
             const svg = await qrToSvgPromise(string, options);
-            return Promise.resolve({ type, svg, raw });
+            return { type, svg, raw };
         }
     }
     catch (err) {
