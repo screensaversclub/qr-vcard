@@ -63,11 +63,11 @@ END:VCARD`;
         const raw = qrcode_1.default.create(string);
         if (type === "canvas") {
             const canvas = await qrToCanvasPromise(string, options);
-            return { type, canvas, raw };
+            return Promise.resolve({ type, canvas, raw });
         }
         else {
             const svg = await qrToSvgPromise(string, options);
-            return { type, svg, raw };
+            return Promise.resolve({ type, svg, raw });
         }
     }
     catch (err) {

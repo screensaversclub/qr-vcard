@@ -71,12 +71,13 @@ END:VCARD`;
       options?: QRCodeToStringOptions
     ) => Promise<string> = QRCode.toString;
     const raw = QRCode.create(string);
+
     if (type === "canvas") {
       const canvas = await qrToCanvasPromise(string, options);
-      return { type, canvas, raw };
+      return Promise.resolve({ type, canvas, raw });
     } else {
       const svg = await qrToSvgPromise(string, options);
-      return { type, svg, raw };
+      return Promise.resolve({ type, svg, raw });
     }
   } catch (err) {
     throw err;
