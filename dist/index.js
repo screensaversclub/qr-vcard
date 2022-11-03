@@ -60,11 +60,14 @@ END:VCARD`;
         //(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>
         const qrToCanvasPromise = qrcode_1.default.toCanvas;
         const qrToSvgPromise = qrcode_1.default.toString;
+        const raw = qrcode_1.default.create(string);
         if (type === "canvas") {
-            return await qrToCanvasPromise(string, options);
+            const canvas = await qrToCanvasPromise(string, options);
+            return { type, canvas, raw };
         }
         else {
-            return await qrToSvgPromise(string, options);
+            const svg = await qrToSvgPromise(string, options);
+            return { type, svg, raw };
         }
     }
     catch (err) {
